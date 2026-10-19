@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08794f">
+  <meta name="description" content="Taifa eCitizen — a Kenyan-inspired public service request portal.">
+  <title>Taifa eCitizen | Public Service Request Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="prototype-bar">Government of Kenya website</div>
+
+  <header class="topbar">
+    <a class="brand" href="#" data-view="home" aria-label="Taifa eCitizen home">
+      <span class="crest" aria-hidden="true">🇰🇪</span>
+      <span class="republic">REPUBLIC OF KENYA</span>
+      <span class="brand-divider"></span>
+      <span class="brand-copy"><strong>Taifa <span>eCitizen</span></strong><small>Public Service Request Portal</small></span>
+    </a>
+    <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-view="home">⌂ <span>Home</span></button>
+      <button class="nav-link" data-view="requests">▤ <span>My Requests</span></button>
+      <button class="nav-link" data-view="services">♧ <span>Services</span></button>
+      <button class="nav-link" data-view="help">ⓘ <span>Help</span></button>
+    </nav>
+    <div class="account-area">
+      <span class="user-icon" aria-hidden="true">♟</span>
+      <span id="account-label">Guest</span>
+      <button class="account-toggle" id="account-button">Sign in <span>⌄</span></button>
+      <button class="account-toggle hidden" id="logout-button">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home-view" class="page-view">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">YOUR SERVICES, ONE PLACE</div>
+          <h1>Karibu, <span id="hero-name">Welcome!</span></h1>
+          <p class="hero-lead">Public services made simpler.</p>
+          <p class="hero-description">Explore Kenyan public-service categories, submit arequest, and keep track of your progress all in one place.</p>
+          <form class="search-bar" id="search-form" role="search">
+            <span aria-hidden="true">⌕</span>
+            <label class="sr-only" for="service-search">Search services</label>
+            <input id="service-search" type="search" placeholder="Search (e.g. National ID, driving licence, business permit…)" autocomplete="off">
+            <button class="button button-primary" type="submit">Search</button>
+          </form>
+          <p class="welcome-message" id="welcome-message">Explore freely. Sign in when you're ready to request a service.</p>
+        </div>
+        <aside class="hero-note">
+          <span class="note-icon">🤝</span>
+          <h2>We are here to help.</h2>
+          <p>Take your time. Find the service you need and follow the simple steps.</p>
+          <p class="swahili-note">Huduma kwa wote.</p>
+        </aside>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="panel popular-panel" id="services-section">
+          <div class="section-heading">
+            <div><div class="eyebrow">GET STARTED</div><h2>Popular Services</h2><p>Choose a category to explore its services.</p></div>
+            <button class="text-button" data-view="services">View all →</button>
+          </div>
+          <div class="service-grid" id="service-grid"></div>
+          <p class="empty-search hidden" id="empty-search">No matching services. Try another search term.</p>
+        </section>
+
+        <aside class="side-column">
+          <section class="panel quick-panel">
+            <h2>⌁ Quick Links</h2>
+            <button class="quick-link" data-action="track"><span class="quick-icon">⌕</span><span>Track Your Request</span><b>›</b></button>
+            <button class="quick-link" data-action="payment"><span class="quick-icon">▣</span><span>Pay with M-Pesa (Demo)</span><b>›</b></button>
+            <button class="quick-link" data-action="county"><span class="quick-icon">♧</span><span>County Services</span><b>›</b></button>
+            <button class="quick-link" data-action="guidelines"><span class="quick-icon">▤</span><span>Service Guidelines</span><b>›</b></button>
+            <button class="quick-link" data-action="help"><span class="quick-icon">☏</span><span>Contact & Help</span><b>›</b></button>
+          </section>
+
+          <section class="panel tracking-panel" id="tracking-panel">
+            <div class="panel-title-row"><span class="flag-pill">🇰🇪</span><div><h2>Track Your Request</h2><p>Enter your demo reference to check its status.</p></div></div>
+            <form id="tracking-form">
+              <label class="sr-only" for="tracking-reference">Request reference number</label>
+              <input id="tracking-reference" placeholder="e.g. TE-2026-123456" autocomplete="off">
+              <button class="button button-primary full-width" type="submit">⌕ Check Status</button>
+            </form>
+            <p id="tracking-result" class="tracking-result" aria-live="polite"></p>
+          </section>
+
+          <button class="mpesa-card" data-action="payment">
+            <span class="mpesa-symbol">▣</span>
+            <span><strong><span class="mpesa-green">M-</span><span class="mpesa-red">PESA</span></strong><small>Explore the payment flow<br>in this demo only.</small></span>
+            <b>›</b>
+          </button>
+        </aside>
+      </div>
+
+      <div class="values-strip">
+        <div><span>⬟</span> Secure-minded design</div><i></i>
+        <div><span>ϟ</span> Simple & convenient</div><i></i>
+        <div><span>♧</span> For a better Kenya</div>
+        <p>🇰🇪 government website.</p>
+      </div>
+    </section>
+
+    <section id="services-view" class="page-view hidden">
+      <div class="page-heading"><div class="eyebrow">EXPLORE TAIFA eCITIZEN</div><h1>Services</h1><p>Choose a category. Sign in is required to create a demo request.</p></div>
+      <div class="panel"><div class="service-grid all-services-grid" id="all-service-grid"></div></div>
+    </section>
+
+    <section id="requests-view" class="page-view hidden">
+      <div class="page-heading"><div class="eyebrow">YOUR ACTIVITY</div><h1>My Requests</h1><p>Review the demonstration requests submitted using your current browser profile.</p></div>
+      <div class="panel requests-content" id="requests-content"></div>
+    </section>
+
+    <section id="help-view" class="page-view hidden">
+      <div class="page-heading"><div class="eyebrow">WE ARE HERE TO HELP</div><h1>Help & Service Guidelines</h1><p>A simple guide to using the Taifa eCitizen demonstration portal.</p></div>
+      <div class="help-grid">
+        <article class="panel"><span class="help-icon">①</span><h2>Explore a service</h2><p>Use the search box or choose a service category from the dashboard. You can browse without signing in.</p></article>
+        <article class="panel"><span class="help-icon">②</span><h2>Sign in or register</h2><p>Create an account with a name and email address. Use fictional details only; this prototype does not verify identities.</p></article>
+        <article class="panel"><span class="help-icon">③</span><h2>Submit a demo request</h2><p>Complete the request form and choose a county. A demo reference is generated for testing.</p></article>
+        <article class="panel"><span class="help-icon">④</span><h2>Track your request</h2><p>Open My Requests to copy your reference. Tracking works only for requests in this browser and account.</p></article>
+        <article class="panel"><span class="help-icon">🇰🇪</span><h2>Kenyan service categories</h2><p>Categories are inspired by common Kenyan public services, including civil registration, NTSA, business, land, education, labour and immigration.</p></article>
+        <article class="panel"><span class="help-icon">🔒</span><h2>Privacy & safety</h2><p>Do not enter national ID numbers, passwords used elsewhere, payment details, or other sensitive personal information.</p></article>
+      </div>
+      <div class="panel help-note"><h2>Need official services?</h2><p>NB: Use verified Government of Kenya service channels.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><strong>Taifa eCitizen</strong><p>Public Service Request Portal · t</p></div>
+    <p>Government of Kenya website.</p>
+  </footer>
+
+  <dialog class="modal" id="auth-dialog" aria-labelledby="auth-title">
+    <div class="modal-header"><div><div class="eyebrow">TAIFA eCITIZEN</div><h2 id="auth-title">Welcome back</h2></div><button class="icon-button" data-close="auth-dialog" aria-label="Close">×</button></div>
+    <p class="modal-intro">We are here to help you. Sign in or create an account to continue.</p>
+    <div class="auth-tabs"><button class="auth-tab active" data-auth-mode="login" type="button">Sign in</button><button class="auth-tab" data-auth-mode="register" type="button">Register</button></div>
+    <form id="auth-form">
+      <div id="register-fields" class="hidden"><label for="register-name">Full name</label><input id="register-name" name="name" placeholder="e.g. Amani Wanjiku" autocomplete="name" minlength="2"></div>
+      <label for="auth-email">Email address</label><input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <label for="auth-password"> password</label><input id="auth-password" type="password" placeholder="At least 6 characters" minlength="6" autocomplete="current-password" required>
+      <p class="form-hint">Use fictional demo details only. This prototype does not provide secure authentication.</p>
+      <p class="form-error" id="auth-error" role="alert"></p>
+      <button class="button button-primary full-width" id="auth-submit" type="submit">Sign in</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="service-dialog" aria-labelledby="service-dialog-title">
+    <div class="modal-header"><div><div class="eyebrow">DEMO SERVICE REQUEST</div><h2 id="service-dialog-title">Request a service</h2></div><button class="icon-button" data-close="service-dialog" aria-label="Close">×</button></div>
+    <p class="modal-intro" id="service-dialog-description"></p>
+    <form id="service-form">
+      <label for="request-county">County</label><select id="request-county" required></select>
+      <label for="request-details">What do you need help with?</label><textarea id="request-details" rows="4" maxlength="500" placeholder="Describe your demo request. Do not include sensitive personal details." required></textarea>
+      <label class="consent-row"><input id="request-consent" type="checkbox" required><span>I understand this is a learning prototype and no official government application will be submitted.</span></label>
+      <p class="form-error" id="service-error" role="alert"></p>
+      <button class="button button-primary full-width" type="submit">Submit  request</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal message-modal" id="message-dialog" aria-labelledby="message-title">
+    <button class="icon-button modal-close-corner" data-close="message-dialog" aria-label="Close">×</button>
+    <div class="message-content"><span class="message-emoji" id="message-emoji">🎉</span><h2 id="message-title">Asante!</h2><p id="message-body"></p><blockquote id="message-quote"></blockquote><button class="button button-primary full-width" data-close="message-dialog">Continue</button></div>
+  </dialog>
+
+  <dialog class="modal" id="payment-dialog" aria-labelledby="payment-title">
+    <div class="modal-header"><div><div class="eyebrow">EXAMPLE ONLY</div><h2 id="payment-title">M-Pesa payment flow</h2></div><button class="icon-button" data-close="payment-dialog" aria-label="Close">×</button></div>
+    <div class="payment"><span class="payment-icon">📱</span><h3>No payment will be made</h3><p>This screen demonstrates where payment guidance could appear in a public-service portal. No payments go through.</p><button class="button button-primary full-width" id="payment-finish" type="button">Finish demo</button></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
